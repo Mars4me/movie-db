@@ -7,5 +7,9 @@ interface ImageProps extends CustomCopmonentProps {
 }
 
 export const Image = (props: ImageProps) => {
-    return <div className={mergeClassName('bg-primary', props.className)}>Image</div>;
+    return (
+        <div className={mergeClassName('bg-primary h-full w-full', props.className)}>
+            <img src={props.src} alt="movie-avatar" className="w-full h-full" />
+        </div>
+    );
 };

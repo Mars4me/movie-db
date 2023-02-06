@@ -3,11 +3,15 @@ import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-do
 import { Container } from '../components/Container';
 import { mergeClassName } from './../utils';
 import { IoIosSearch } from 'react-icons/io';
+import { SearchResult } from '../components/SearchResult';
 
 const MENU_CLASS = `
+    py-1
     p-1.5
     hover:bg-primary
     rounded-md
+    mobile:px-6
+
 `;
 
 const MENU_CLASS_ACTIVE = `
@@ -21,6 +25,7 @@ export const Header = () => {
 
     const [pathname, setPathname] = useState('');
     const pathnameRef = useRef('');
+    const defaultKeyword = useRef('');
 
     const [keyword, setKeyword] = useState('');
     const [isSearchFocus, setSearchFocus] = useState(false);
@@ -28,13 +33,15 @@ export const Header = () => {
 
     const goToSearchPage = () => {
         if (keyword) {
+            defaultKeyword.current = keyword;
             navigate(`/search?q=${keyword}`);
             setSearchFocus(false);
             searchRef.current?.blur();
         }
     };
 
-    const initKeyword = () => (pathnameRef.current === '/search' ? setKeyword(params.get('q') || '') : setKeyword(''));
+    const initKeyword = () =>
+        pathnameRef.current === '/search' ? setKeyword(defaultKeyword.current) : setKeyword('');
 
     const onWindowClick = () => {
         setSearchFocus(false);
@@ -42,16 +49,24 @@ export const Header = () => {
     };
 
     const getMenuClass = (path: string) => {
-        return path === pathname ? mergeClassName(MENU_CLASS, MENU_CLASS_ACTIVE) : mergeClassName(MENU_CLASS, '');
+        return path === pathname
+            ? mergeClassName(MENU_CLASS, MENU_CLASS_ACTIVE)
+            : mergeClassName(MENU_CLASS, '');
     };
 
     useEffect(() => {
         setPathname(location.pathname);
         pathnameRef.current = location.pathname;
-    }, [location.pathname]);
+        defaultKeyword.current = params.get('q') || '';
+        initKeyword();
+    }, [location.pathname, params]);
 
     useEffect(() => {
-        window.addEventListener('click', () => onWindowClick());
+        window.addEventListener('click', onWindowClick);
+
+        return () => {
+            window.removeEventListener('click', onWindowClick);
+        };
     }, []);
 
     return (
@@ -64,7 +79,7 @@ export const Header = () => {
                         <Link to="/">MovieDB</Link>
                     </h1>
                     {/* menu */}
-                    <div className="pt-1 flex items-center gap-1.5">
+                    <div className="pt-1 flex items-center gap-1.5 mobile:fixed mobile:bottom-0 mobile:left-0 mobile:right-0 mobile:justify-center mobile:py-3 mobile:bg-header mobile:gap-6">
                         <Link className={getMenuClass('/movies')} to="/movies">
                             Movies
                         </Link>
@@ -73,14 +88,14 @@ export const Header = () => {
                         </Link>
                     </div>
                 </menu>
-                <form
-                    onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                        e.preventDefault();
-                        goToSearchPage();
-                    }}
-                    className="border-b-[1.5px] border-white flex items-center p1 flex-[0.5] focus-within:border-primary"
-                >
+                <div className="border-b-[1.5px] border-white flex items-center p1 flex-[0.5] focus-within:border-primary relative">
                     <input
+                        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                goToSearchPage();
+                            }
+                        }}
                         onClick={(e) => {
                             e.stopPropagation();
                             setSearchFocus(true);
@@ -91,10 +106,12 @@ export const Header = () => {
                         className="bg-transparent outline-0 flex-1"
                         placeholder="Search..."
                     />
-                    <button>
-                        <IoIosSearch size={18} className="cursor-pointer" />
-                    </button>
-                </form>
+                    <IoIosSearch size={18} className="cursor-pointer" />
+                    {/* search results */}
+                    {isSearchFocus && (
+                        <SearchResult keyword={keyword} goToSearchPage={goToSearchPage}></SearchResult>
+                    )}
+                </div>
             </Container>
         </div>
     );

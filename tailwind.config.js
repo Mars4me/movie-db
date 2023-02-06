@@ -12,6 +12,11 @@ module.exports = {
                 sans: ['Quicksand', 'sans-serif'],
                 serif: ['Merriweather', 'serif'],
             },
+            screens: {
+                mobile: {
+                    max: '768px',
+                },
+            },
         },
     },
     plugins: [require('@tailwindcss/line-clamp')],
