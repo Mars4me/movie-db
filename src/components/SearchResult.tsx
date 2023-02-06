@@ -32,10 +32,10 @@ export const SearchResult = (props: SearchResultProps) => {
         fetch();
     }, [props.keyword]);
     return (
-        <div className="absolute top-[48px] left-0 right-0 rounded-md overflow-hidden bg-header my-1.5">
+        <div className="absolute top-[48px] left-0 right-0 rounded-md overflow-auto bg-header max-h-[480px] shadow-lg">
             {items.map((film, index) => (
                 <div
-                    className="flex items-start p-1.5 rounded-lg hover:bg-primary cursor-pointer"
+                    className="flex items-start p-1.5 rounded-lg hover:bg-primary cursor-pointer "
                     key={index}
                 >
                     {/* image */}
@@ -54,7 +54,7 @@ export const SearchResult = (props: SearchResultProps) => {
             {totalItem.length > items.length && (
                 <button
                     onClick={() => props.goToSearchPage()}
-                    className="p-3 py-1.5 mt-2 bg-primary w-full hover:text-body"
+                    className="p-3 py-1.5 mt-2 bg-primary w-full hover:text-body sticky bottom-0 shadow-lg -mb-3 "
                 >
                     More results
                 </button>

@@ -2,12 +2,20 @@
 
 @import 'slick-carousel/slick/slick-theme.css';
 
-.slick-hero .slick-prev {
+.slick-prev {
     z-index: 10;
+    left: 0;
+}
+
+.slick-next {
+    z-index: 10;
+    right: 0;
+}
+
+.slick-hero .slick-prev {
     left: 25px;
 }
 
 .slick-hero .slick-next {
-    z-index: 10;
     right: 25px;
 }

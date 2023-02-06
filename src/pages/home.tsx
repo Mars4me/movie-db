@@ -3,11 +3,13 @@ import { Slider } from './../components/slider/Slider';
 import { useState, useEffect } from 'react';
 import { Film } from '../interfaces';
 import { PremiereHero } from './../components/PremiereHero';
+import { Card } from '../components/Card';
 
 export const Home = () => {
     const [trendings, setTrendings] = useState<Film[]>([]);
+    const [inTheaters, setInTheaters] = useState<Film[]>([]);
 
-    const fetchPremiere = () => {
+    const fetch = () => {
         const arrs: Film[] = [];
 
         for (let i = 0; i < 6; i++) {
@@ -23,10 +25,11 @@ export const Home = () => {
             });
         }
         setTrendings(arrs);
+        setInTheaters(arrs);
     };
 
     useEffect(() => {
-        fetchPremiere();
+        fetch();
     }, []);
 
     return (
@@ -40,6 +43,13 @@ export const Home = () => {
                 </Slider>
             </Section>
             {/* in theaters */}
+            <Section title="In Theaters">
+                <Slider isMovieCard={true} autoplay={true} slidesToShow={5} slidesToScroll={5}>
+                    {inTheaters.map((film, id) => (
+                        <Card film={film} key={id}></Card>
+                    ))}
+                </Slider>
+            </Section>
             {/* popular */}
             {/* best choice TV*/}
             {/* best choice movies*/}

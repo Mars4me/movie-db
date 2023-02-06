@@ -70,8 +70,8 @@ export const Header = () => {
     }, []);
 
     return (
-        <div className="bg-header">
-            <Container className="flex justify-between">
+        <div className="bg-header sticky top-0 z-[99]">
+            <Container className="flex justify-between gap-3">
                 {/* logo & menu */}
                 <menu className="flex items-center gap-6">
                     {/* logo */}
@@ -88,7 +88,8 @@ export const Header = () => {
                         </Link>
                     </div>
                 </menu>
-                <div className="border-b-[1.5px] border-white flex items-center p1 flex-[0.5] focus-within:border-primary relative">
+                {/* search */}
+                <div className="border-b-[1.5px] border-white flex items-center p1 flex-[0.5] focus-within:border-primary relative ">
                     <input
                         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
                             if (e.key === 'Enter') {
