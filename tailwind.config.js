@@ -4,9 +4,13 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: '',
-                header: '',
-                body: '',
+                primary: '#423F71',
+                header: '#292841',
+                body: '#1C1829',
+            },
+            fontFamily: {
+                sans: ['Quicksand', 'sans-serif'],
+                serif: ['Merriweather', 'serif'],
             },
         },
     },
