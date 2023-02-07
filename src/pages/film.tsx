@@ -4,7 +4,7 @@ import { Card } from '../components/Card';
 import { Section } from '../components/Section';
 import { MediaType } from '../types';
 import { Image } from './../components/Image';
-import { Casts, Film as FilmType, Season } from './../interfaces';
+import { Cast, Trailer, Film as FilmType } from './../interfaces';
 
 interface FilmProps {
     mediaType: MediaType;
@@ -22,7 +22,8 @@ export const Film = (props: FilmProps) => {
         genreIds: [1, 2, 3, 4],
         seasons: [],
     });
-    const [casts, setCasts] = useState<Casts[]>([]);
+    const [casts, setCasts] = useState<Cast[]>([]);
+    const [trailers, setTrailers] = useState<Trailer[]>([]);
 
     const fetch = () => {
         const arrs: any[] = [];
@@ -31,6 +32,7 @@ export const Film = (props: FilmProps) => {
             arrs.push({});
         }
         setCasts(arrs);
+        setTrailers(arrs);
     };
 
     useEffect(() => {
@@ -79,6 +81,21 @@ export const Film = (props: FilmProps) => {
                 </div>
             </Section>
             {/* trailers */}
+            <Section title="Casts" className="">
+                <div className="scrollbar scrollbar-thumb-primary scrollbar-track-header">
+                    <div className="flex items-center gap-3">
+                        {trailers.map((trailer, index) => (
+                            <div className="my-3 max-w-[200px] flex-shrink-0">
+                                <Card
+                                    imageSrc=""
+                                    key={index}
+                                    title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.Lorem ipsum dolor sit amet, consectetur adipisicing eli"
+                                ></Card>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Section>
             {/* seasons */}
             {/* recomendations */}
         </>
