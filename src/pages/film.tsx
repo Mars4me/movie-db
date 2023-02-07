@@ -5,14 +5,14 @@ import { Section } from '../components/Section';
 import { Slider } from '../components/slider/Slider';
 import { MediaType } from '../types';
 import { Image } from './../components/Image';
-import { Cast, Trailer, Film as FilmType } from './../interfaces';
+import { Cast, Trailer, Film as IFilm } from './../interfaces';
 
 interface FilmProps {
     mediaType: MediaType;
 }
 export const Film = (props: FilmProps) => {
     const { params } = useParams();
-    const [film, setFilm] = useState<FilmType>({
+    const [film, setFilm] = useState<IFilm>({
         id: 0,
         mediaType: props.mediaType,
         title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.??????',
@@ -38,6 +38,7 @@ export const Film = (props: FilmProps) => {
     });
     const [casts, setCasts] = useState<Cast[]>([]);
     const [trailers, setTrailers] = useState<Trailer[]>([]);
+    const [recomendations, setRecomendations] = useState<IFilm[]>([]);
 
     const fetch = () => {
         const arrs: any[] = [];
@@ -47,6 +48,7 @@ export const Film = (props: FilmProps) => {
         }
         setCasts(arrs);
         setTrailers(arrs);
+        setRecomendations(arrs);
     };
 
     useEffect(() => {
@@ -119,6 +121,13 @@ export const Film = (props: FilmProps) => {
                 </Slider>
             </Section>
             {/* recomendations */}
+            <Section title="Recomendations">
+                <Slider isMovieCard={true} autoplay={true}>
+                    {recomendations.map((film, id) => (
+                        <Card imageSrc={film.posterPath} title={film.title} key={id}></Card>
+                    ))}
+                </Slider>
+            </Section>
         </>
     );
 };
