@@ -8,6 +8,7 @@ export interface CustomCopmonentProps {
 
 export interface Season {
     id: number;
+    seasonNumber: number;
 }
 
 export interface Film {

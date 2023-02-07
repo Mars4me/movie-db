@@ -3,6 +3,7 @@ import Slick, { Settings } from 'react-slick';
 
 interface SliderProps extends Settings {
     isMovieCard?: boolean;
+    isSeasonCard?: boolean;
 }
 
 export const Slider = (props: SliderProps) => {
@@ -19,7 +20,31 @@ export const Slider = (props: SliderProps) => {
             swipe: false,
             responsive: [
                 {
-                    breakpoint: 700,
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                    },
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                    },
+                },
+            ],
+        };
+    } else if (props.isSeasonCard) {
+        settings = {
+            ...settings,
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            swipe: false,
+            responsive: [
+                {
+                    breakpoint: 600,
                     settings: {
                         slidesToShow: 3,
                         slidesToScroll: 3,

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card } from '../components/Card';
 import { Section } from '../components/Section';
+import { Slider } from '../components/slider/Slider';
 import { MediaType } from '../types';
 import { Image } from './../components/Image';
 import { Cast, Trailer, Film as FilmType } from './../interfaces';
@@ -20,7 +21,20 @@ export const Film = (props: FilmProps) => {
         coverPath: '',
         posterPath: '',
         genreIds: [1, 2, 3, 4],
-        seasons: [],
+        seasons: [
+            {
+                id: 1,
+                seasonNumber: 1,
+            },
+            {
+                id: 2,
+                seasonNumber: 2,
+            },
+            {
+                id: 3,
+                seasonNumber: 3,
+            },
+        ],
     });
     const [casts, setCasts] = useState<Cast[]>([]);
     const [trailers, setTrailers] = useState<Trailer[]>([]);
@@ -97,6 +111,13 @@ export const Film = (props: FilmProps) => {
                 </div>
             </Section>
             {/* seasons */}
+            <Section title="Seasons">
+                <Slider slidesToShow={2} slidesToScroll={2} swipe={false}>
+                    {film.seasons.map((season, id) => (
+                        <Card imageSrc={''} title={`Season ${season.seasonNumber}`} key={id}></Card>
+                    ))}
+                </Slider>
+            </Section>
             {/* recomendations */}
         </>
     );
