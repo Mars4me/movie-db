@@ -47,7 +47,7 @@ export const Home = () => {
             <Section title="In Theaters">
                 <Slider isMovieCard={true} autoplay={true} slidesToShow={5} slidesToScroll={5}>
                     {inTheaters.map((film, id) => (
-                        <Card film={film} key={id}></Card>
+                        <Card imageSrc={film.posterPath} title={film.title} key={id}></Card>
                     ))}
                 </Slider>
             </Section>
