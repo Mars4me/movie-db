@@ -104,7 +104,7 @@ export const Header = () => {
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
                         value={keyword}
                         type="text"
-                        className="bg-transparent outline-0 flex-1"
+                        className="flex-1 bg-transparent outline-0"
                         placeholder="Search..."
                     />
                     <IoIosSearch size={18} className="cursor-pointer" />

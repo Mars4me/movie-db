@@ -26,3 +26,12 @@ body {
     left: 0;
     background: linear-gradient(to right, theme('colors.body'), transparent 90%, theme('colors.body'));
 }
+
+.overlay-film-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, theme('colors.body'), transparent 90%, theme('colors.body'));
+}

@@ -17,6 +17,7 @@ export const SearchResult = (props: SearchResultProps) => {
         for (let i = 0; i < 6; i++) {
             arrs.push({
                 id: i,
+                mediaType: 'tv',
                 title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.',
                 description: '',
                 coverPath: '',
