@@ -4,12 +4,12 @@
 
 .slick-prev {
     z-index: 10;
-    left: 0;
+    left: -15px;
 }
 
 .slick-next {
     z-index: 10;
-    right: 0;
+    right: -15px;
 }
 
 .slick-hero .slick-prev {
