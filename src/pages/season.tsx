@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Image } from '../components/Image';
-import { Film } from '../interfaces';
+import { IFilm } from '../interfaces';
 import { Section } from '../components/Section';
 
 export const Season = () => {
-    const [film, setFilm] = useState<Film>({
+    const [film, setFilm] = useState<IFilm>({
         id: 0,
         mediaType: 'tv',
         title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.??????',

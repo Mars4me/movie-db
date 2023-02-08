@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Film } from './../interfaces';
+import { IFilm } from './../interfaces';
 import { Image } from './Image';
 
 interface SearchResultProps {
@@ -8,11 +8,11 @@ interface SearchResultProps {
 }
 
 export const SearchResult = (props: SearchResultProps) => {
-    const [items, setItems] = useState<Film[]>([]);
-    const [totalItem, setTotalItem] = useState<Film[]>([]);
+    const [items, setItems] = useState<IFilm[]>([]);
+    const [totalItem, setTotalItem] = useState<IFilm[]>([]);
 
     const fetch = () => {
-        const arrs: Film[] = [];
+        const arrs: IFilm[] = [];
 
         for (let i = 0; i < 6; i++) {
             arrs.push({

@@ -1,16 +1,16 @@
 import { Section } from '../components/Section';
 import { Slider } from './../components/slider/Slider';
 import { useState, useEffect } from 'react';
-import { Film } from '../interfaces';
+import { IFilm } from '../interfaces';
 import { PremiereHero } from './../components/PremiereHero';
 import { Card } from '../components/Card';
 
 export const Home = () => {
-    const [trendings, setTrendings] = useState<Film[]>([]);
-    const [inTheaters, setInTheaters] = useState<Film[]>([]);
+    const [trendings, setTrendings] = useState<IFilm[]>([]);
+    const [inTheaters, setInTheaters] = useState<IFilm[]>([]);
 
     const fetch = () => {
-        const arrs: Film[] = [];
+        const arrs: IFilm[] = [];
 
         for (let i = 0; i < 6; i++) {
             arrs.push({

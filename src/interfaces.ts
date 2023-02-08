@@ -11,7 +11,7 @@ export interface Season {
     seasonNumber: number;
 }
 
-export interface Film {
+export interface IFilm {
     id: number;
     mediaType: MediaType;
     title: string;

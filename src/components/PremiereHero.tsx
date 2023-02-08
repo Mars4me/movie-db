@@ -1,11 +1,11 @@
 import React from 'react';
-import { Film } from '../interfaces';
+import { IFilm } from '../interfaces';
 import { Image } from './Image';
 import { MdPlayCircleOutline } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 interface PremiereHeroProps {
-    film: Film;
+    film: IFilm;
 }
 export const PremiereHero = (props: PremiereHeroProps) => {
     const navigate = useNavigate();

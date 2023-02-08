@@ -5,7 +5,7 @@ import { Section } from '../components/Section';
 import { Slider } from '../components/slider/Slider';
 import { MediaType } from '../types';
 import { Image } from './../components/Image';
-import { Cast, Trailer, Film as IFilm } from './../interfaces';
+import { Cast, Trailer, IFilm } from './../interfaces';
 
 interface FilmProps {
     mediaType: MediaType;
