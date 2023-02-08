@@ -68,11 +68,11 @@ export const Season = () => {
             <Section title="Episodes">
                 {episodes.map((episode, index) => (
                     <div
-                        className="flex items-stretch gap-4 px-3 my-6 overflow-hidden rounded-md cursor-pointer hover:bg-primary py-1.5"
+                        className="flex items-stretch gap-4 px-3 my-6 overflow-hidden rounded-md cursor-pointer hover:bg-header py-1.5"
                         key={index}
                     >
                         <Image src="" className="min-w-[300px] w-[300px] h-[300px]"></Image>
-                        <div className="flex flex-col overflow-hidden">
+                        <div className="flex flex-col gap-3 overflow-hidden">
                             <p className="text-lg truncate">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita dolor
                                 reprehenderit perspiciatis, omnis optio saepe, nesciunt non repellendus
