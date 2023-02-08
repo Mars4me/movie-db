@@ -50,13 +50,14 @@ export const Catalog: React.FC<CatalogProps> = (props) => {
             {/* background */}
             <div className="h-[120px] left-0 right-0 top-0 relative">
                 <div className="overlay-film-cover"></div>
+                <div className="w-full h-full bg-primary"></div>
                 <Image src=""></Image>
             </div>
             {/* PAGE TITLE */}
             <Section title={title} className="-mt-[90px] flex items-center relative z-10"></Section>
             {/* Films */}
             <Section>
-                <div className="relative grid grid-cols-4 sm:grid-cols-3 mobile:grid-cols-2 z-[11]">
+                <div className="relative grid lg:grid-cols-4 sm:grid-cols-3 mobile:grid-cols-2 z-[11]">
                     {films.map((film, index) => (
                         <div key={index}>
                             <Card imageSrc="" title={film.title} />

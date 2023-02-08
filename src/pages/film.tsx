@@ -116,22 +116,26 @@ export const Film = (props: FilmProps) => {
             {/* seasons */}
             <Section title="Seasons">
                 <Slider slidesToShow={2} slidesToScroll={2} swipe={false}>
-                    {film.seasons.map((season, id) => (
-                        <Card
-                            onClick={() => navigate(`/tv/${film.id}/season/${season.seasonNumber}`)}
-                            imageSrc={''}
-                            title={`Season ${season.seasonNumber}`}
-                            key={id}
-                        ></Card>
-                    ))}
+                    {(_) =>
+                        film.seasons.map((season, id) => (
+                            <Card
+                                onClick={() => navigate(`/tv/${film.id}/season/${season.seasonNumber}`)}
+                                imageSrc={''}
+                                title={`Season ${season.seasonNumber}`}
+                                key={id}
+                            ></Card>
+                        ))
+                    }
                 </Slider>
             </Section>
             {/* recomendations */}
             <Section title="Recomendations">
                 <Slider isMovieCard={true} autoplay={true}>
-                    {recomendations.map((film, id) => (
-                        <Card imageSrc={film.posterPath} title={film.title} key={id}></Card>
-                    ))}
+                    {(_) =>
+                        recomendations.map((film, id) => (
+                            <Card imageSrc={film.posterPath} title={film.title} key={id}></Card>
+                        ))
+                    }
                 </Slider>
             </Section>
         </>

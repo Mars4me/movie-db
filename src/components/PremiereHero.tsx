@@ -2,19 +2,14 @@ import React from 'react';
 import { IFilm } from '../interfaces';
 import { Image } from './Image';
 import { MdPlayCircleOutline } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
 
 interface PremiereHeroProps {
     film: IFilm;
+    onClick: () => void;
 }
 export const PremiereHero = (props: PremiereHeroProps) => {
-    const navigate = useNavigate();
-
     return (
-        <div
-            className="h-[300px] relative flex items-center cursor-pointer"
-            onClick={() => navigate(`/${props.film.mediaType}/${props.film.id}`)}
-        >
+        <div className="h-[300px] relative flex items-center cursor-pointer" onClick={() => props.onClick()}>
             {/* bg image */}
             <div className="absolute top-0 bottom-0 left-0 right-0">
                 <div className="overlay-slick-hero"></div>
