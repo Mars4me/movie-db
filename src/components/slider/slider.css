@@ -19,3 +19,12 @@
 .slick-hero .slick-next {
     right: 25px;
 }
+
+.slick-slider {
+    user-select: auto;
+
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}

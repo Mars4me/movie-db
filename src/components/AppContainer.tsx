@@ -5,7 +5,7 @@ import { Header } from '../layouts/header';
 
 export const AppContainer = () => {
     return (
-        <div className="pb-[64px]">
+        <div className="pb-[64px] ">
             <BrowserRouter>
                 <Header />
                 <Body />

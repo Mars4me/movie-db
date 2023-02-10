@@ -86,10 +86,9 @@ export const Film = (props: FilmProps) => {
                 <div className="scrollbar scrollbar-thumb-primary scrollbar-track-header">
                     <div className="flex items-center gap-3">
                         {casts.map((cast, index) => (
-                            <div className="my-3 w-[200px] flex-shrink-0">
+                            <div className="my-3 w-[200px] flex-shrink-0" key={index}>
                                 <Card
                                     imageSrc=""
-                                    key={index}
                                     title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.Lorem ipsum dolor sit amet, consectetur adipisicing eli"
                                 ></Card>
                             </div>
@@ -102,10 +101,9 @@ export const Film = (props: FilmProps) => {
                 <div className="scrollbar scrollbar-thumb-primary scrollbar-track-header">
                     <div className="flex items-center gap-3">
                         {trailers.map((trailer, index) => (
-                            <div className="my-3 w-[200px] flex-shrink-0">
+                            <div className="my-3 w-[200px] flex-shrink-0" key={index}>
                                 <Card
                                     imageSrc=""
-                                    key={index}
                                     title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ducimus.Lorem ipsum dolor sit amet, consectetur adipisicing eli"
                                 ></Card>
                             </div>

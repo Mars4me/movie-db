@@ -16,10 +16,16 @@ export const PremiereHero = (props: PremiereHeroProps) => {
                 <Image src=""></Image>
             </div>
             {/* about */}
-            <div className="flex flex-col gap-3 items-start relative z-10 mx-[55px] max-w-[50%] mobile:max-w-[100%]">
+            <div
+                className="flex flex-col gap-3 items-start relative z-10 mx-[55px] max-w-[50%] mobile:max-w-[100%] cursor-default"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <p className="text-xl line-clamp-1">{props.film.title}</p>
                 <p className="text-sm line-clamp-3">{props.film.description}</p>
-                <button className="px-3 py-1.5 flex items-center gap-3 bg-primary rounded-md">
+                <button
+                    className="px-3 py-1.5 flex items-center gap-3 bg-primary rounded-md"
+                    onClick={() => props.onClick()}
+                >
                     <MdPlayCircleOutline size={18}></MdPlayCircleOutline>
                     <span>Play trailers</span>
                 </button>
