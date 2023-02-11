@@ -45,8 +45,8 @@ export const SearchResult = (props: SearchResultProps) => {
                     <div className="px-3 truncate">
                         <p className="text-base truncate">{film.title}</p>
                         <ul className="flex flex-wrap gap-x-1.5 text-sm opacity-[0.7]">
-                            {film.genreIds.map((id, i) => (
-                                <li key={i}>{i}</li>
+                            {film.genreIds.map((id, index) => (
+                                <li key={index}>{index}</li>
                             ))}
                         </ul>
                     </div>

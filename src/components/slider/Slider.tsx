@@ -69,7 +69,9 @@ export const Slider = (props: SliderProps) => {
         <Slick
             {...settings}
             autoplaySpeed={5000}
-            onSwipe={() => setOnSwipe(true)}
+            onSwipe={() => {
+                setOnSwipe(true);
+            }}
             afterChange={() => setOnSwipe(false)}
         >
             {props.children ? props.children(onSwipe) : ''}

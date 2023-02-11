@@ -14,10 +14,12 @@
 
 .slick-hero .slick-prev {
     left: 25px;
+    transform: scale(1.5);
 }
 
 .slick-hero .slick-next {
     right: 25px;
+    transform: scale(1.5);
 }
 
 .slick-slider {
