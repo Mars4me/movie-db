@@ -6,7 +6,7 @@ import { PremiereHero } from './../components/PremiereHero';
 import { Card } from '../components/Card';
 import { useNavigate } from 'react-router-dom';
 import { getInTheaters, getPremiers } from './../api/theMovieDataBaseAPI';
-import { isFilm, tmbdImageSrc, tmbdPosterSrcLowResolution } from './../utils';
+import { isFilm, tmbdPosterSrcLowResolution } from './../utils';
 
 export const Home = () => {
     const navigate = useNavigate();

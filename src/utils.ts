@@ -1,4 +1,3 @@
-import { IoMdFastforward } from 'react-icons/io';
 import { IFilm } from './interfaces';
 import { MediaType } from './types';
 

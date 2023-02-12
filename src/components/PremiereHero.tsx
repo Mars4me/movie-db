@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { IFilm } from '../interfaces';
 import { Image } from './Image';
 import { MdPlayCircleOutline } from 'react-icons/md';
@@ -8,9 +8,29 @@ interface PremiereHeroProps {
     film: IFilm;
     onClick: () => void;
 }
+
 export const PremiereHero = (props: PremiereHeroProps) => {
+    const mousePosition = useRef<number>(0);
+
+    const getMousePosition = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        return +event.clientX + +event.clientY;
+    };
+
+    const isMouseMovedAfterClick = (firstPos: number, secondPos: number) =>
+        Math.abs(firstPos - secondPos) < 10;
+
     return (
-        <div className="h-[450px] relative flex items-center cursor-pointer" onClick={() => props.onClick()}>
+        <div
+            className="h-[450px] relative flex items-center cursor-pointer"
+            onMouseUp={(e) => {
+                if (isMouseMovedAfterClick(mousePosition.current, getMousePosition(e))) {
+                    props.onClick();
+                }
+            }}
+            onMouseDown={(e) => {
+                mousePosition.current = getMousePosition(e);
+            }}
+        >
             {/* bg image */}
             <div className="absolute top-0 bottom-0 left-0 right-0">
                 <div className="overlay-slick-hero overlay-film-cover"></div>

@@ -32,3 +32,10 @@ export interface Trailer {
     id: number;
     key: string;
 }
+
+/*add new field to Window object.*/
+// declare global {
+//     interface Window {
+//         mousePosition: number;
+//     }
+// }

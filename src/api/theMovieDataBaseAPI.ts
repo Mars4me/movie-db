@@ -3,11 +3,11 @@ import { MediaType } from '../types';
 import { formatResult } from '../utils';
 import { IFilm } from './../interfaces';
 
-const axiosClient = axios.create({
+const tmdbClient = axios.create({
     baseURL: process.env.REACT_APP_TMDB_API_URL,
 });
 
-axiosClient.interceptors.request.use((config) => {
+tmdbClient.interceptors.request.use((config) => {
     return {
         ...config,
         params: {
@@ -19,7 +19,7 @@ axiosClient.interceptors.request.use((config) => {
 
 export const getPremiers = async (mediaType: MediaType): Promise<IFilm[]> => {
     try {
-        const { data } = await axiosClient.get<
+        const { data } = await tmdbClient.get<
             any,
             AxiosResponse<{
                 results: unknown[];
@@ -35,13 +35,12 @@ export const getPremiers = async (mediaType: MediaType): Promise<IFilm[]> => {
 
 export const getInTheaters = async (): Promise<IFilm[]> => {
     try {
-        const { data } = await axiosClient.get<
+        const { data } = await tmdbClient.get<
             any,
             AxiosResponse<{
                 results: unknown[];
             }>
         >(`/movie/now_playing`);
-
         return data.results.map((value) => formatResult('movie', value));
     } catch (error) {
         console.error(error);
