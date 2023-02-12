@@ -49,29 +49,25 @@ export const Home = () => {
             {/* premiere */}
             <Section className="py-0">
                 <Slider className="slick-hero" autoplay={true} slidesToShow={1} slidesToScroll={1}>
-                    {(onSwipe) =>
-                        trendings.map((film, id) => (
-                            <PremiereHero
-                                onClick={() => (!onSwipe ? navigate(`/${film.mediaType}/${film.id}`) : '')}
-                                film={film}
-                                key={id}
-                            ></PremiereHero>
-                        ))
-                    }
+                    {trendings.map((film, id) => (
+                        <PremiereHero
+                            onClick={() => navigate(`/${film.mediaType}/${film.id}`)}
+                            film={film}
+                            key={id}
+                        ></PremiereHero>
+                    ))}
                 </Slider>
             </Section>
             {/* in theaters */}
             <Section title="In Theaters">
                 <Slider isMovieCard={true} autoplay={true} slidesToShow={5} slidesToScroll={5}>
-                    {(_) =>
-                        inTheaters.map((film, id) => (
-                            <Card
-                                imageSrc={tmbdPosterSrcLowResolution(film.posterPath)}
-                                title={film.title}
-                                key={id}
-                            ></Card>
-                        ))
-                    }
+                    {inTheaters.map((film, id) => (
+                        <Card
+                            imageSrc={tmbdPosterSrcLowResolution(film.posterPath)}
+                            title={film.title}
+                            key={id}
+                        ></Card>
+                    ))}
                 </Slider>
             </Section>
             {/* popular */}
